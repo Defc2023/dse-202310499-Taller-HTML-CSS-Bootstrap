@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listas Enlazadas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- JetBrains Mono from Google Fonts as fallback for JetBrainsMono Nerd -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Catppuccin Mocha Palette */
+    body {
+      background-color: #1e1e2e;
+      color: #cdd6f4;
+      font-family: 'JetBrainsMono Nerd', 'JetBrains Mono', monospace;
+    }
+    a {
+      color: #89b4fa;
+    }
+    .card {
+      background-color: #313244;
+      border: 1px solid #45475a;
+    }
+    pre {
+      background-color: #45475a;
+      color: #cdd6f4;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      margin: 0;
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    .code-box .row > div {
+      border-right: 1px solid #45475a;
+    }
+    .code-box .row > div:last-child {
+      border-right: none;
+    }
+    /* Table styling */
+    .table thead th {
+      color: #cdd6f4;
+      background-color: #45475a;
+      border-color: #45475a;
+    }
+    .table tbody td {
+      color: #cdd6f4;
+      background-color: #313244;
+      border-color: #45475a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-4">
+    <header class="text-center mb-5">
+      <h1>Listas Enlazadas</h1>
+    </header>
+
+    <section class="mb-5">
+      <h2>Introducción</h2>
+      <p>
+        Una lista enlazada es otra estructura de datos que, al igual que un arreglo, almacena elementos en una secuencia ordenada.
+        Sin embargo, existen algunas diferencias clave.
+      </p>
+    </section>
+
+    <!-- Sección con el diseño para "Diferencias Principales" -->
+    <section class="mb-5">
+      <h2>Diferencias Principales</h2>
+      <div class="row">
+        <!-- Texto y atributos (value, next) -->
+        <div class="col-md-8">
+          <p>
+            La principal diferencia es que las listas enlazadas están compuestas por objetos llamados 
+            <code>ListNode</code>. Este objeto contiene dos atributos:
+          </p>
+          <div class="card mb-3 code-box">
+            <div class="card-body">
+              <!-- Primera fila: value -->
+              <div class="row mb-3">
+                <div class="col-12">
+                  <strong>value:</strong>
+                </div>
+                <div class="col-12">
+                  Almacena el valor del nodo. Puede ser un carácter, un entero, etc.
+                </div>
+              </div>
+              <!-- Segunda fila: next -->
+              <div class="row">
+                <div class="col-12">
+                  <strong>next:</strong>
+                </div>
+                <div class="col-12">
+                  Almacena la referencia al siguiente nodo en la lista enlazada.
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>
+            La imagen a continuación visualizaría el objeto <code>ListNode</code> (esto se entenderá mejor más adelante).
+          </p>
+        </div>
+        <!-- Imagen a la derecha -->
+        <div class="col-md-4 text-md-end text-center">
+          <img 
+            src="img/listNode.jpg" 
+            alt="Visualización del objeto ListNode" 
+            class="img-fluid"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2>Creando una Lista Enlazada desde Cero</h2>
+      <p>
+        Mediante el encadenamiento de estos objetos <code>ListNode</code> se puede construir una lista enlazada.
+        Comenzamos definiendo la clase <code>ListNode</code>:
+      </p>
+      <div class="card mb-3">
+        <div class="card-body">
+          <pre><code class="language-python">class ListNode:
+    def __init__(self, val):
+        self.val = val
+        self.next = None</code></pre>
+        </div>
+      </div>
+      <p>
+        Utilizando el puntero <code>next</code> de cada nodo, podemos conectar los nodos entre sí. 
+        Supongamos que tenemos tres objetos: <code>ListNode1</code>, <code>ListNode2</code> y <code>ListNode3</code>.
+      </p>
+      <!-- Imagen después del párrafo de conexión de nodos -->
+      <div class="text-center mb-4">
+        <img src="img/listNodes.jpg" alt="Conexión de nodos" class="img-fluid">
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <pre><code class="language-python">ListNode1.next = ListNode2
+ListNode2.next = ListNode3
+ListNode3.next = None</code></pre>
+        </div>
+      </div>
+      <!-- Imagen después del código de conexión de nodos -->
+      <div class="text-center mb-4">
+        <img src="img/linkedListNodes.jpg" alt="Código de conexión de nodos" class="img-fluid">
+      </div>
+    </section>
+
+    <!-- Sección de Recorrido con la imagen a la derecha -->
+    <section class="mb-5">
+      <h2>Recorrido</h2>
+      <div class="row">
+        <!-- Contenido textual y código a la izquierda -->
+        <div class="col-md-8">
+          <p>
+            Para recorrer una lista enlazada desde el inicio hasta el final, se puede utilizar un bucle 
+            <code>while</code> sencillo:
+          </p>
+          <div class="card mb-3">
+            <div class="card-body">
+              <pre><code class="language-python">cur = ListNode1
+while cur:
+    cur = cur.next</code></pre>
+            </div>
+          </div>
+          <ol>
+            <li>Comenzamos el recorrido en la cabeza de la lista, que es <code>ListNode1</code>.</li>
+            <li>Asignamos este nodo a una variable <code>cur</code>, que denota el nodo actual.</li>
+            <li>Ejecutamos el bucle <code>while</code> hasta llegar al final de la lista, donde <code>cur</code> es <code>null</code>.</li>
+            <li>En cada iteración, actualizamos <code>cur</code> para que apunte al siguiente nodo en la lista (<code>cur = cur.next</code>).</li>
+            <li>El recorrido se realiza en tiempo <code>O(n)</code>, donde <code>n</code> es el número de nodos en la lista.</li>
+          </ol>
+        </div>
+        <!-- Imagen a la derecha -->
+        <div class="col-md-4 text-md-end text-center">
+          <img 
+            src="img/linkedListTraversal.jpg" 
+            alt="Visualización del recorrido de la lista" 
+            class="img-fluid"
+          >
+        </div>
+        <div class="mt-3 text-center">
+          <a href="https://www.youtube.com/watch?v=N6dOwBde7-M" target="_blank" class="text-decoration-none" style="color: #a6e3a1; font-weight: 700; text-decoration: underline; font-size: 1.25rem;">
+            Bro Code te lo explica (Click aquí)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2>Lista Enlazada Circular</h2>
+      <p>
+        Un escenario interesante se presenta si el puntero <code>next</code> de <code>ListNode3</code> se establece a <code>ListNode1</code> 
+        en lugar de a <code>null</code>. Esto da como resultado una lista enlazada circular.
+      </p>
+      <p>
+        Intentar iterar a través de una lista enlazada circular resultaría en un bucle infinito, ya que nunca se alcanzaría el final de la lista.
+      </p>
+      <!-- Imagen después del párrafo de la lista circular -->
+      <div class="text-center mb-4">
+        <img src="img/circularLinkedList.jpg" alt="Visualización de lista enlazada circular" class="img-fluid">
+      </div>
+    </section>
+
+    <!-- Sección de Complejidad Temporal -->
+    <section class="mb-5">
+      <h2>Complejidad Temporal</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Operación</th>
+              <th>Complejidad de Tiempo Big-O</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Acceso</td>
+              <td>O(n)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Búsqueda</td>
+              <td>O(n)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Inserción</td>
+              <td>O(1)*</td>
+              <td>Asumiendo que ya se tiene una referencia al nodo en la posición deseada</td>
+            </tr>
+            <tr>
+              <td>Eliminación</td>
+              <td>O(1)*</td>
+              <td>Asumiendo que ya se tiene una referencia al nodo en la posición deseada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Sección de suscripción -->
+    <section class="mb-5">
+      <h2 class="text-center">Suscríbete para recibir más información</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card p-4">
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+              </div>
+              <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Suscribirse</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Fin de sección de suscripción -->
+    
+    <!-- Sección de redirección -->
+    <section class="mb-5">
+      <h2 class="text-center">Visitanos</h2>
+      <div class="row justify-content-center mt-4">
+        <!-- Círculo para YouTube -->
+        <div class="col-auto text-center">
+          <a href="https://www.youtube.com/@Fireship" target="_blank" class="d-inline-block text-decoration-none">
+            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center"
+                style="width: 100px; height: 100px;">
+              <span class="fs-5 text-white">YouTube</span>
+            </div>
+          </a>
+        </div>
+        <!-- Espaciado entre círculos -->
+        <div class="col-auto align-self-center">
+          <span class="mx-3 fs-3 text-muted">|</span>
+        </div>
+        <!-- Círculo para Fireship -->
+        <div class="col-auto text-center">
+          <a href="https://fireship.io/" target="_blank" class="d-inline-block text-decoration-none">
+            <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center"
+                style="width: 100px; height: 100px;">
+              <span class="fs-5 text-white">Fireship</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Bootstrap JS and dependencies (optional for interactive components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
