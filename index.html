@@ -4,12 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Listas Enlazadas</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- JetBrains Mono from Google Fonts as fallback for JetBrainsMono Nerd -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Catppuccin Mocha Palette */
     body {
       background-color: #1e1e2e;
       color: #cdd6f4;
@@ -38,7 +35,6 @@
     .code-box .row > div:last-child {
       border-right: none;
     }
-    /* Table styling */
     .table thead th {
       color: #cdd6f4;
       background-color: #45475a;
@@ -65,11 +61,9 @@
       </p>
     </section>
 
-    <!-- Sección con el diseño para "Diferencias Principales" -->
     <section class="mb-5">
       <h2>Diferencias Principales</h2>
       <div class="row">
-        <!-- Texto y atributos (value, next) -->
         <div class="col-md-8">
           <p>
             La principal diferencia es que las listas enlazadas están compuestas por objetos llamados 
@@ -77,7 +71,6 @@
           </p>
           <div class="card mb-3 code-box">
             <div class="card-body">
-              <!-- Primera fila: value -->
               <div class="row mb-3">
                 <div class="col-12">
                   <strong>value:</strong>
@@ -86,7 +79,6 @@
                   Almacena el valor del nodo. Puede ser un carácter, un entero, etc.
                 </div>
               </div>
-              <!-- Segunda fila: next -->
               <div class="row">
                 <div class="col-12">
                   <strong>next:</strong>
@@ -101,7 +93,6 @@
             La imagen a continuación visualizaría el objeto <code>ListNode</code> (esto se entenderá mejor más adelante).
           </p>
         </div>
-        <!-- Imagen a la derecha -->
         <div class="col-md-4 text-md-end text-center">
           <img 
             src="img/listNode.jpg" 
@@ -130,7 +121,6 @@
         Utilizando el puntero <code>next</code> de cada nodo, podemos conectar los nodos entre sí. 
         Supongamos que tenemos tres objetos: <code>ListNode1</code>, <code>ListNode2</code> y <code>ListNode3</code>.
       </p>
-      <!-- Imagen después del párrafo de conexión de nodos -->
       <div class="text-center mb-4">
         <img src="img/listNodes.jpg" alt="Conexión de nodos" class="img-fluid">
       </div>
@@ -141,17 +131,14 @@ ListNode2.next = ListNode3
 ListNode3.next = None</code></pre>
         </div>
       </div>
-      <!-- Imagen después del código de conexión de nodos -->
       <div class="text-center mb-4">
         <img src="img/linkedListNodes.jpg" alt="Código de conexión de nodos" class="img-fluid">
       </div>
     </section>
 
-    <!-- Sección de Recorrido con la imagen a la derecha -->
     <section class="mb-5">
       <h2>Recorrido</h2>
       <div class="row">
-        <!-- Contenido textual y código a la izquierda -->
         <div class="col-md-8">
           <p>
             Para recorrer una lista enlazada desde el inicio hasta el final, se puede utilizar un bucle 
@@ -172,7 +159,6 @@ while cur:
             <li>El recorrido se realiza en tiempo <code>O(n)</code>, donde <code>n</code> es el número de nodos en la lista.</li>
           </ol>
         </div>
-        <!-- Imagen a la derecha -->
         <div class="col-md-4 text-md-end text-center">
           <img 
             src="img/linkedListTraversal.jpg" 
@@ -197,13 +183,11 @@ while cur:
       <p>
         Intentar iterar a través de una lista enlazada circular resultaría en un bucle infinito, ya que nunca se alcanzaría el final de la lista.
       </p>
-      <!-- Imagen después del párrafo de la lista circular -->
       <div class="text-center mb-4">
         <img src="img/circularLinkedList.jpg" alt="Visualización de lista enlazada circular" class="img-fluid">
       </div>
     </section>
 
-    <!-- Sección de Complejidad Temporal -->
     <section class="mb-5">
       <h2>Complejidad Temporal</h2>
       <div class="table-responsive">
@@ -241,7 +225,6 @@ while cur:
       </div>
     </section>
 
-    <!-- Sección de suscripción -->
     <section class="mb-5">
       <h2 class="text-center">Suscríbete para recibir más información</h2>
       <div class="row justify-content-center">
@@ -264,13 +247,10 @@ while cur:
         </div>
       </div>
     </section>
-    <!-- Fin de sección de suscripción -->
     
-    <!-- Sección de redirección -->
     <section class="mb-5">
       <h2 class="text-center">Visitanos</h2>
       <div class="row justify-content-center mt-4">
-        <!-- Círculo para YouTube -->
         <div class="col-auto text-center">
           <a href="https://www.youtube.com/@Fireship" target="_blank" class="d-inline-block text-decoration-none">
             <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center"
@@ -279,11 +259,9 @@ while cur:
             </div>
           </a>
         </div>
-        <!-- Espaciado entre círculos -->
         <div class="col-auto align-self-center">
           <span class="mx-3 fs-3 text-muted">|</span>
         </div>
-        <!-- Círculo para Fireship -->
         <div class="col-auto text-center">
           <a href="https://fireship.io/" target="_blank" class="d-inline-block text-decoration-none">
             <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center"
@@ -296,7 +274,6 @@ while cur:
     </section>
   </div>
   
-  <!-- Bootstrap JS and dependencies (optional for interactive components) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
